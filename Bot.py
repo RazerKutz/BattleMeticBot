@@ -1,5 +1,8 @@
 import config
-import discord
+import requests
+from io import BytesIO
+from PIL import Image
+from urllib.request import urlretrieve
 from discord.ext import commands
 
 TOKEN = config.app_token
@@ -17,6 +20,12 @@ async def on_ready():
 @client.command(pass_context=True)
 async def status(ctx, stuff=""):
     """Send Status"""
-    await client.say("https://is.gd/03OmvF")
+
+    response = requests.get("http://cache.gametracker.com/server_info/108.61.118.183:2302/b_560_95_1.png")
+    pic = Image.open(BytesIO(response.content))
+
+    pic.save("pic.png")
+    # print(testImage)
+    await client.upload("pic.png")
 
 client.run(TOKEN)
