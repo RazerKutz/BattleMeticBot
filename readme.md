@@ -1,0 +1,1 @@
+This is a bot that gets the current status of a serve via gametracker.com. It downloads the gametracker banner then uploads it. It also grabs the last time gametracker updated the tracker data.
