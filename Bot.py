@@ -1,7 +1,7 @@
 import config
 import requests
 from io import BytesIO
-from  bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 from PIL import Image
 import urllib.request
 from discord.ext import commands
@@ -10,12 +10,22 @@ TOKEN = config.app_token
 BOT_PREFIX = "!"
 client = commands.Bot(command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 
+
 @client.event
 async def on_ready():
-    print ("Logged in as")
-    print (client.user.name)
-    print (client.user.id)
-    print ("------")
+    print("Logged in as")
+    print(client.user.name)
+    print(client.user.id)
+    print("------")
+
+
+# @client.command(pass_context=True)
+# async def playing_dayz(ctx, stuff=""):
+#     """Displays the current members"""
+#     for member in client.get_all_members():
+#         if str(member.game) == "DayZ":
+#             await client.say("@" + str(member) + " is playing " + str(member.game))
+#     await client.say("Done")
 
 
 @client.command(pass_context=True)
@@ -36,4 +46,11 @@ async def status(ctx, stuff=""):
     # print(testImage)
     await client.upload("pic.png")
     await client.say(last_scan.text)
+
+
+@client.command(pass_context=True)
+async def ip(ctx, stuff=""):
+    await client.say("Server IP: `108.61.118.183:2302`")
+
+
 client.run(TOKEN)
