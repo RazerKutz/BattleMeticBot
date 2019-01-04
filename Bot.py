@@ -6,8 +6,8 @@ from PIL import Image
 import urllib.request
 from discord.ext import commands
 
-TOKEN = config.beta_app_token
-BOT_PREFIX = "?"
+TOKEN = config.app_token
+BOT_PREFIX = "!"
 client = commands.Bot(command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 
 
